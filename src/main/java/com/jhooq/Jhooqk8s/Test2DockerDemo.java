@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JhooqDockerDemo {
+public class Test2DockerDemo {
 
     public static void main(String[] args) {
-        SpringApplication.run(JhooqDockerDemo.class, args);
+        SpringApplication.run(Test2DockerDemo.class, args);
     }
 
 }
