@@ -18,7 +18,7 @@ spec:
         app: test2
     spec:
       containers:
-        - name: springboot
+        - name: springboot-2
           image: alessandroliviero/test2-docker-demo:test2-docker-demo
           ports:
             - containerPort: 8081
