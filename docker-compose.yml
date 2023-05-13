@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  jhooq-springboot-container:
-    image: jhooq-spring-boot-docker-compose:1
+  test2-springboot-container:
+    image: test2-spring-boot-docker-compose:1
     build:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - /data/jhooq-springboot-container
+      - /data/test2-springboot-container
     ports:
-      - "8080-8100:8080"
+      - "8080-8100:8081"
