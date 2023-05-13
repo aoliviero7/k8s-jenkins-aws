@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: alessandroliviero/test-docker-demo:test-docker-demo
+          image: alessandroliviero/test2-docker-demo:test2-docker-demo
           ports:
             - containerPort: 8081
           env:
