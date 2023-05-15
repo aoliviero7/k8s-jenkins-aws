@@ -65,7 +65,7 @@ spec:
           image: alessandroliviero/test2-docker-demo:test2-docker-demo
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -74,10 +74,10 @@ metadata:
   namespace: tesi
 spec:
   ports:
-    - port: 80
+    - port: 8080
       name: high
       protocol: TCP
-      targetPort: 80
+      targetPort: 8080
   selector:
     app: test2
   type: NodePort
