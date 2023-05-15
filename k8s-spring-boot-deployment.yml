@@ -43,7 +43,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test2
+  name: springboot-test2
   namespace: tesi
 spec:
   strategy:
@@ -54,11 +54,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: test2
+      app: springboot-test2
   template:
     metadata:
       labels:
-        app: test2
+        app: springboot-test2
     spec:
       containers:
         - name: springboot-test2
@@ -70,7 +70,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: test2
+  name: springboot-test2
   namespace: tesi
 spec:
   ports:
@@ -79,6 +79,6 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: test2
+    app: springboot-test2
   type: LoadBalancer
 ---
