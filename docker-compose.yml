@@ -9,4 +9,4 @@ services:
     volumes:
       - /data/test2-springboot-container
     ports:
-      - "8080-8100:8081"
+      - "8080:8080"
