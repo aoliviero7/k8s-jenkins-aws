@@ -30,11 +30,15 @@ kind: Service
 metadata:
   name: jhooq-springboot
   namespace: tesi
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: '/actuator/health'
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
-      targetPort: 8080
+      name: high
+      protocol: TCP
+      targetPort: 80
   selector:
     app: jhooq-springboot
 ---
@@ -70,11 +74,15 @@ kind: Service
 metadata:
   name: test2
   namespace: tesi
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: '/actuator/health'
 spec:
-  type: LoadBalancer
   ports:
     - port: 8081
+      name: high
+      protocol: TCP
       targetPort: 8081
   selector:
     app: test2
----
+  type: NodePort
+---s
