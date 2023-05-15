@@ -10,4 +10,9 @@ public class Test2DockerDemoController {
     public String test2() {
         return "Hello test 2 - Jhooq-k8s i Have updated the message";
     }
+    
+    @GetMapping("/")
+    public String test2() {
+        return "ROOT 2 - Jhooq-k8s i Have updated the message";
+    }
 }
