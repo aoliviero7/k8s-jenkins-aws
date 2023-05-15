@@ -74,8 +74,6 @@ kind: Service
 metadata:
   name: test2
   namespace: tesi
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: '/actuator/health'
 spec:
   ports:
     - port: 8081
