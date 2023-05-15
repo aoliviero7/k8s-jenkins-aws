@@ -21,6 +21,7 @@ spec:
       containers:
         - name: springboot
           image: alessandroliviero/jhooq-docker-demo:jhooq-docker-demo
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
@@ -60,6 +61,7 @@ spec:
       containers:
         - name: springboot-test2
           image: alessandroliviero/test2-docker-demo:test2-docker-demo
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
 ---
