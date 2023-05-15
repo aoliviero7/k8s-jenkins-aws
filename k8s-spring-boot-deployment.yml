@@ -85,4 +85,4 @@ spec:
   selector:
     app: test2
   type: NodePort
----s
+---
