@@ -31,7 +31,7 @@ metadata:
   name: jhooq-springboot
   namespace: tesi
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: '/ping'
+    alb.ingress.kubernetes.io/healthcheck-path: '/hello'
 spec:
   type: NodePort
   ports:
