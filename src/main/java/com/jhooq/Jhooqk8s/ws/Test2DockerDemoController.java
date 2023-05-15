@@ -7,8 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class Test2DockerDemoController {
 
     @GetMapping("/secondo")
+    public String secondo() {
+        return "Hello test secondo 2 - Jhooq-k8s i Have updated the message";
+    }
+    
+    @GetMapping("/test2")
     public String test2() {
-        return "Hello test 2 - Jhooq-k8s i Have updated the message";
+        return "Hello test test2 2 - Jhooq-k8s i Have updated the message";
+    }
+    
+     @GetMapping("/test2/secondo")
+    public String test2() {
+        return "Hello test test2/secondo 2 - Jhooq-k8s i Have updated the message";
     }
     
     @GetMapping("/")
