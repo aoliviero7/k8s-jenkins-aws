@@ -23,22 +23,20 @@ spec:
           image: alessandroliviero/jhooq-docker-demo:jhooq-docker-demo
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: jhooq-springboot
   namespace: tesi
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: '/hello'
 spec:
   type: NodePort
   ports:
-    - port: 80
+    - port: 8080
       name: high
       protocol: TCP
-      targetPort: 80
+      targetPort: 8080
   selector:
     app: jhooq-springboot
 ---
@@ -67,7 +65,7 @@ spec:
           image: alessandroliviero/test2-docker-demo:test2-docker-demo
           imagePullPolicy: Always
           ports:
-            - containerPort: 8081
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -76,10 +74,10 @@ metadata:
   namespace: tesi
 spec:
   ports:
-    - port: 8081
+    - port: 80
       name: high
       protocol: TCP
-      targetPort: 8081
+      targetPort: 80
   selector:
     app: test2
   type: NodePort
