@@ -80,5 +80,5 @@ spec:
       targetPort: 8081
   selector:
     app: test2
-  type: ClusterIP
+  type: NodeGroup
 ---
