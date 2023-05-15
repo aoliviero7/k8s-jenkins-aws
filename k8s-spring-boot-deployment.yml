@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jhooq-springboot
+  namespace: tesi
 spec:
   strategy:
     type: RollingUpdate
@@ -21,20 +22,18 @@ spec:
         - name: springboot
           image: alessandroliviero/jhooq-docker-demo:jhooq-docker-demo
           ports:
-            - containerPort: 8080
-          env:
-            - name: PORT
-              value: "8080"
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: jhooq-springboot
+  namespace: tesi
 spec:
   type: LoadBalancer
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
   selector:
     app: jhooq-springboot
 ---
@@ -42,6 +41,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test2
+  namespace: tesi
 spec:
   strategy:
     type: RollingUpdate
@@ -62,14 +62,12 @@ spec:
           image: alessandroliviero/test2-docker-demo:test2-docker-demo
           ports:
             - containerPort: 8081
-          env:
-            - name: PORT
-              value: "8081"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: test2
+  namespace: tesi
 spec:
   type: LoadBalancer
   ports:
@@ -77,3 +75,4 @@ spec:
       targetPort: 8081
   selector:
     app: test2
+---
