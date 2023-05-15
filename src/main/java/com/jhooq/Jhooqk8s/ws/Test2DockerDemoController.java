@@ -12,7 +12,7 @@ public class Test2DockerDemoController {
     }
     
     @GetMapping("/")
-    public String test2() {
+    public String rroot() {
         return "ROOT 2 - Jhooq-k8s i Have updated the message";
     }
 }
