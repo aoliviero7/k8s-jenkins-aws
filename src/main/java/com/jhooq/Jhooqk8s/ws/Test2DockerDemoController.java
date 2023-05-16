@@ -32,8 +32,8 @@ public class Test2DockerDemoController {
     @GetMapping("/test2/bucket")
     public byte[] bucket() {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
-        String secretKey = "YOUR_SECRET_KEY";
-        String bucketName = "WtIGRitriMpJK0bnJNPqsck2JwGuSBX0BxMrFYM+";
+        String secretKey = "WtIGRitriMpJK0bnJNPqsck2JwGuSBX0BxMrFYM+";
+        String bucketName = "test-bucket-aleoliv";
         String objectKey = "unisa.png"; // Nome del file nell'bucket
         
         // Crea le credenziali di accesso
