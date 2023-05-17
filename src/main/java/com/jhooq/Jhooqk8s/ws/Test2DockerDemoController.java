@@ -66,8 +66,7 @@ public class Test2DockerDemoController {
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
-            inputStream.close();
-            outputStream.close();
+
             System.out.println("Immagine scaricata con successo!");
             return buffer;
         } catch (Exception e) {
