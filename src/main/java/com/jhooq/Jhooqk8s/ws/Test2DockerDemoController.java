@@ -1,7 +1,14 @@
 package com.jhooq.Jhooqk8s.ws;
 
+import com.amazonaws.Response;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
@@ -35,7 +42,7 @@ public class Test2DockerDemoController {
     }
     
     @GetMapping("/test2/bucket")
-    public byte[] bucket() {
+    public ResponseEntity<byte[]> bucket() {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
         String secretKey = "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";
         String bucketName = "test-bucket-aleoliv";
@@ -72,8 +79,10 @@ public class Test2DockerDemoController {
 
             fileInputStream.close();
 
+
             System.out.println("Immagine scaricata con successo!");
-            return buffer;
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_PNG_VALUE)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"staMinchia.png" + "\"").body(buffer);
         } catch (Exception e) {
             e.printStackTrace();
         }
