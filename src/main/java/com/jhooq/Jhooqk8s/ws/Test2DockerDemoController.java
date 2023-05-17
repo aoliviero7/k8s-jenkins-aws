@@ -70,7 +70,12 @@ public class Test2DockerDemoController {
             FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
             inputStream.close();
 
+            System.out.println(new File(destinationPath).length());
+
             File destinationFile = new File(destinationPath);
+
+            System.out.println(destinationFile.length());
+
             outputStream = new FileOutputStream(destinationFile);
             InputStream fileInputStream = new FileInputStream(destinationPath);
             byte[] buffer = new byte[(int)destinationFile.length()];
