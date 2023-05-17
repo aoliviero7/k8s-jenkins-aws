@@ -56,7 +56,7 @@ public class Test2DockerDemoController {
         try {
             S3ObjectInputStream inputStream = s3Object.getObjectContent();
             FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
-            inputStream.close();
+
             File destinationFile = new File(destinationPath);
             FileOutputStream outputStream = new FileOutputStream(destinationFile);
             byte[] buffer = new byte[1024];
@@ -64,6 +64,7 @@ public class Test2DockerDemoController {
             while ((bytesRead = s3Object.getObjectContent().read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
+            inputStream.close();
             outputStream.close();
             System.out.println("Immagine scaricata con successo!");
             return buffer;
