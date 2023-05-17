@@ -77,6 +77,8 @@ public class Test2DockerDemoController {
 
             fileInputStream.read(buffer);
 
+            System.out.println("NON CI STA UN CAZZO"+buffer);
+
             fileInputStream.close();
 
 
