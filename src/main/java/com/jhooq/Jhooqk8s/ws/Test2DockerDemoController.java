@@ -1,5 +1,7 @@
 package com.jhooq.Jhooqk8s.ws;
 
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
@@ -52,7 +54,7 @@ public class Test2DockerDemoController {
 
         // Scarica l'oggetto e salvalo come file locale
         try {
-            S3ObjectInputStream inputStream = s3object.getObjectContent();
+            S3ObjectInputStream inputStream = s3Object.getObjectContent();
             FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
             inputStream.close();
             File destinationFile = new File(destinationPath);

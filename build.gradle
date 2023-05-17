@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jetty'
 	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.469'
