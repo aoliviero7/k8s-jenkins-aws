@@ -73,7 +73,7 @@ public class Test2DockerDemoController {
             inputStream.close();
             InputStream fileInputStream = new FileInputStream(destinationPath);
 
-            fileInputStream.close();
+            //fileInputStream.close();
 
             System.out.println("Immagine scaricata con successo!");
 
