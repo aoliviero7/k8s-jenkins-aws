@@ -42,7 +42,7 @@ public class Test2DockerDemoController {
     }
     
     @GetMapping("/test2/bucket")
-    public ResponseEntity<byte[]> bucket() {
+    public ResponseEntity<File> bucket() {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
         String secretKey = "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";
         String bucketName = "test-bucket-aleoliv";
@@ -89,7 +89,7 @@ public class Test2DockerDemoController {
 
             System.out.println("Immagine scaricata con successo!");
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_PNG_VALUE)
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"staMinchia.png" + "\"").body(buffer);
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"staMinchia.png" + "\"").body(destinationFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
