@@ -43,7 +43,7 @@ public class Test2DockerDemoController {
         return "Hello test test2/secondo 2 - Jhooq-k8s i Have updated the message";
     }
     
-    @GetMapping("/test2/bucket")
+    @GetMapping(value = "/test2/bucket",produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody byte[] bucket() {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
         String secretKey = "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";
@@ -71,10 +71,13 @@ public class Test2DockerDemoController {
             inputStream = s3Object.getObjectContent();
             FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
             inputStream.close();
+            InputStream fileInputStream = new FileInputStream(destinationPath);
+
+            fileInputStream.close();
 
             System.out.println("Immagine scaricata con successo!");
-            InputStream in = getClass().getResourceAsStream(destinationPath);
-            return IOUtils.toByteArray(in);
+
+            return IOUtils.toByteArray(inputStream);
 
 
         } catch (Exception e) {
