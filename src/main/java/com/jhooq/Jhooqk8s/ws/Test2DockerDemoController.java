@@ -5,7 +5,10 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
@@ -58,14 +61,16 @@ public class Test2DockerDemoController {
         try {
             inputStream = s3Object.getObjectContent();
             FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
+            inputStream.close();
 
             File destinationFile = new File(destinationPath);
             outputStream = new FileOutputStream(destinationFile);
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
-            }
+            InputStream fileInputStream = new FileInputStream(destinationPath);
+            byte[] buffer = new byte[(int)destinationFile.length()];
+
+            fileInputStream.read(buffer);
+
+            fileInputStream.close();
 
             System.out.println("Immagine scaricata con successo!");
             return buffer;
