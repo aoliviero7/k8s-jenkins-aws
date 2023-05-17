@@ -52,6 +52,9 @@ public class Test2DockerDemoController {
 
         // Scarica l'oggetto e salvalo come file locale
         try {
+            S3ObjectInputStream inputStream = s3object.getObjectContent();
+            FileUtils.copyInputStreamToFile(inputStream, new File(destinationPath));
+            inputStream.close();
             File destinationFile = new File(destinationPath);
             FileOutputStream outputStream = new FileOutputStream(destinationFile);
             byte[] buffer = new byte[1024];
