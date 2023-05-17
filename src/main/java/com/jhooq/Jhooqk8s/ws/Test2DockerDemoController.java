@@ -77,7 +77,7 @@ public class Test2DockerDemoController {
 
             System.out.println("Immagine scaricata con successo!");
 
-            return IOUtils.toByteArray(inputStream);
+            return IOUtils.toByteArray(fileInputStream);
 
 
         } catch (Exception e) {
