@@ -1,8 +1,11 @@
-FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
+FROM node:14.8.0-stretch-slim as build-env
+LABEL desc="docker image of angular 9 app"
+WORKDIR /app
+COPY ["package.json","package-lock.json","/app/"]
+RUN npm install
+RUN npm install -g @angular/cli
 
-RUN mkdir destination-dir-for-add
-ADD sample.tar.gz /destination-dir-for-add
-
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY . /app
+#ENTRYPOINT ["ng","--version"]
+RUN ng build
+CMD ng serve --host 0.0.0.0 --port 8080
