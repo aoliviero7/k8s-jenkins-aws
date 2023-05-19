@@ -1,7 +1,7 @@
 FROM node:14.20-alpine as build-env
 LABEL desc="docker image of angular 9 app"
 WORKDIR /app
-COPY ["FrontEnd/package.json","FrontEnd/package-lock.json","/app/"]
+COPY ["package.json","package-lock.json","/app/"]
 RUN npm install
 RUN npm install -g @angular/cli
 
