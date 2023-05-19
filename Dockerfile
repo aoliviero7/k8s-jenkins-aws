@@ -1,4 +1,4 @@
-FROM node:14.8.0-stretch-slim as build-env
+FROM node:14.20-alpine as build-env
 LABEL desc="docker image of angular 9 app"
 WORKDIR /app
 COPY ["FrontEnd/package.json","FrontEnd/package-lock.json","/app/"]
