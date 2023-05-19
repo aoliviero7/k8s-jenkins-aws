@@ -7,5 +7,5 @@ RUN npm install -g @angular/cli
 
 COPY . /app
 #ENTRYPOINT ["ng","--version"]
-RUN ng build
+
 CMD ng serve --host 0.0.0.0 --port 8080
