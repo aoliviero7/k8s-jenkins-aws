@@ -104,7 +104,7 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: alessandroliviero/front-end-docker-demo:front-end-docker-demo
+          image: alessandroliviero/front-end:front-end
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
