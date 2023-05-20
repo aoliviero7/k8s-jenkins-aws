@@ -40,7 +40,7 @@ public class DataDockerDemoController {
                 int columnCount = metaData.getColumnCount();
                 
                 System.out.println("ColumnCount " + columnCount);
-                System.out.println("rs.len " + rs.lenght);
+                System.out.println("rs.len " + rs.lenght());
 
                 while (rs.next()) {
                     Map<String, Object> entry = new HashMap<>();
