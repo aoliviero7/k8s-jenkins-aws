@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -24,6 +26,9 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.ListObjectsV2Request;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 @RestController
 public class Test2DockerDemoController {
@@ -43,12 +48,13 @@ public class Test2DockerDemoController {
         return "Hello test test2/secondo 2 - Jhooq-k8s i Have updated the message";
     }
     
-    @GetMapping(value = "/test2/bucket",produces = MediaType.IMAGE_PNG_VALUE)
-    public @ResponseBody byte[] bucket() {
+    //@GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.ALL_VALUE)
+    public @ResponseBody byte[] bucket(@PathVariable String objectKey) {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
         String secretKey = "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";
         String bucketName = "test-bucket-aleoliv";
-        String objectKey = "unisa.png"; // Nome del file nell'bucket
+        //String objectKey = "unisa.png"; // Nome del file nell'bucket
         
         // Crea le credenziali di accesso
         BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
@@ -84,6 +90,40 @@ public class Test2DockerDemoController {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    @GetMapping(value = "/test2/listbucket")
+    public @ResponseBody List<String> listBucket() {
+        String accessKey = "AKIAV6ZL64I3L4CRWPHC";
+        String secretKey = "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";
+        String bucketName = "test-bucket-aleoliv";
+        //String objectKey = "unisa.png"; // Nome del file nell'bucket
+        List<String> fileNames = new ArrayList<>();
+        
+        // Crea le credenziali di accesso
+        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+
+        // Crea un client Amazon S3
+        AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                            .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                            .build();
+        
+        // Esegue la richiesta per ottenere la lista degli oggetti nel bucket
+        ListObjectsV2Request listRequest = new ListObjectsV2Request().withBucketName(bucketName);
+        ListObjectsV2Result result;
+
+        do {
+            result = s3Client.listObjectsV2(listRequest);
+
+            for (S3ObjectSummary objectSummary : result.getObjectSummaries()) {
+                fileNames.add(objectSummary.getKey());
+            }
+
+            String token = result.getNextContinuationToken();
+            listRequest.setContinuationToken(token);
+        } while (result.isTruncated());
+
+        return fileNames;
     }
     
     @GetMapping("/")
