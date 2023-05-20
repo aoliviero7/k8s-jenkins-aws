@@ -31,6 +31,7 @@ import com.amazonaws.services.s3.model.ListObjectsV2Request;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
+@CrossOrigin(*)
 @RestController
 public class Test2DockerDemoController {
 
@@ -44,7 +45,7 @@ public class Test2DockerDemoController {
         return "Hello test test2 2 - Jhooq-k8s i Have updated the message";
     }
     
-     @GetMapping("/test2/secondo")
+    @GetMapping("/test2/secondo")
     public String testsecondo() {
         return "Hello test test2/secondo 2 - Jhooq-k8s i Have updated the message";
     }
