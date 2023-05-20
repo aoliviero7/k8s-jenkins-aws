@@ -40,12 +40,6 @@ public class DataDockerDemoController {
                 int columnCount = metaData.getColumnCount();
                 
                 System.out.println("ColumnCount " + columnCount);
-                int rowCount = 0;
-                if (rs.last()) {
-                    rowCount = rs.getRow();
-                    rs.beforeFirst();
-                }
-                System.out.println("Numero di record: " + rowCount);
 
                 while (rs.next()) {
                     Map<String, Object> entry = new HashMap<>();
