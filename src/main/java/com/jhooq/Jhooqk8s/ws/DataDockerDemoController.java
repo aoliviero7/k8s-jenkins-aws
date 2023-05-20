@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataDockerDemoController {
 
-    @GetMapping("/hello")
+    @GetMapping("/data")
     public String hello() {
-        return "Hello - Jhooq-k8s i Have updated the message";
+        return "Hello data manager- Jhooq-k8s i Have updated the message";
     }
     
     @GetMapping("/")
