@@ -30,13 +30,17 @@ public class DataDockerDemoController {
         String password = "userDB";
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
-            String sql = "SELECT * FROM " + tableName;
+            String sql = "SELECT * FROM " + tableName + ";";
+            System.out.println(sql);
 
             try (Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(sql)) {
 
                 ResultSetMetaData metaData = rs.getMetaData();
                 int columnCount = metaData.getColumnCount();
+                
+                System.out.println("ColumnCount " + columnCount);
+                System.out.println("rs.len " + rs.lenght);
 
                 while (rs.next()) {
                     Map<String, Object> entry = new HashMap<>();
