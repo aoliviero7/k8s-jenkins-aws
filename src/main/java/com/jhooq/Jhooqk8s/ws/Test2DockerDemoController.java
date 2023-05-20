@@ -50,8 +50,8 @@ public class Test2DockerDemoController {
         return "Hello test test2/secondo 2 - Jhooq-k8s i Have updated the message";
     }
     
-    //@GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.IMAGE_PNG_VALUE)
-    @GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.ALL_VALUE)
+    @GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.IMAGE_PNG_VALUE)
+    //@GetMapping(value = "/test2/bucket/{objectKey}",produces = MediaType.ALL_VALUE)
     public @ResponseBody byte[] bucket(@PathVariable String objectKey) {
         String accessKey = "AKIAV6ZL64I3L4CRWPHC";
         String secretKey = "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";
