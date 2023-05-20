@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DataDockerDemo {
+public class LambdaDockerDemo {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataDockerDemo.class, args);
+        SpringApplication.run(LambdaDockerDemo.class, args);
     }
 
 }
