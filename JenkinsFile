@@ -1,0 +1,32 @@
+node {
+
+    stage("Git Clone"){
+
+        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/aoliviero7/k8s-jenkins-aws',  branch: 'front-end'
+    }
+
+     stage('Gradle Build') {
+        sh './gradlew --stop'
+        //sh './gradlew build --stacktrace'
+    }
+
+    stage("Docker build"){
+        sh 'docker version'
+        sh 'docker build -t front-end .'
+        //sh 'docker run -p 80:80 test2-docker-demo'
+        sh 'docker image list'
+        sh 'docker tag front-end alessandroliviero/front-end:front-end'
+        sh 'docker login -u alessandroliviero -p %VuzKw5CKdBuk?s'
+    }
+
+
+
+    stage("Push Image to Docker Hub"){
+        sh 'docker push  alessandroliviero/front-end:front-end'
+    }
+    
+    stage("kubernetes deployment"){
+        sh 'sudo kubectl rollout restart deployment front-end'
+        //sh 'sudo kubectl apply -f test2.yml'
+    }
+} 
